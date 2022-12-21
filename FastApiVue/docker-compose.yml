@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+
+  backend:
+    build: ./app/backend
+    ports:
+      - 8000:8000
+    volumes:
+      - ./app/backend:/app
+    command: uvicorn src.app:app --reload --host 0.0.0.0 --port 8000
+  frontend:
+    build: ./app/frontend
+    volumes:
+      - './app/frontend:/app'
+      - '/app/node_volumes'
+    ports:
+      - 8080:8080

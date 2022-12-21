@@ -39,7 +39,7 @@ export default {
       this.gameInProgress = gameInProgress
       let outer_this = this
       if (!outer_this.connection) {
-        outer_this.connection = new WebSocket('ws://localhost:8000/ws')
+        outer_this.connection = new WebSocket('ws://0.0.0.0:8000/ws')
         outer_this.connection.onmessage = function (event) {
           outer_this.my_data = JSON.parse(event.data).slice(1, -1).split(', ')
         }
